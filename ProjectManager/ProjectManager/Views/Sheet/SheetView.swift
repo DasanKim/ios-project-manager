@@ -32,20 +32,20 @@ struct SheetView: View {
     
     var editButton: some View {
         Button("Edit") {
-            viewModel.canEditable.toggle()
+            viewModel.edit()
         }
     }
     
     var cancelButton: some View {
         Button("Cancel") {
             dismiss()
-            viewModel.canEditable = true
+            viewModel.cancel()
         }
     }
     
     var doneButton: some View {
         Button("Done") {
-            viewModel.saveMemo()
+            viewModel.save()
             dismiss()
         }
     }

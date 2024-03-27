@@ -16,22 +16,22 @@ final class MemoListViewModel: ObservableObject, ViewUpdateDelegate {
     init(category: Memo.Category, memoManager: MemoManager) {
         self.category = category
         self.memoManager = memoManager
-        memos = memoManager.filterMemo(by: category)
+        memos = memoManager.filter(by: category)
     }
     
     func setSelectedMemo(_ memo: Memo) {
         selectedMemo = memo
     }
     
-    func deleteMemo(_ memo: Memo) {
+    func delete(_ memo: Memo) {
         guard let index = memos.firstIndex(where: { $0.id == memo.id }) else {
             return
         }
         memos.remove(at: index)
-        memoManager.deleteMemo(memo)
+        memoManager.delete(memo)
     }
     
-    func update(memo: Memo) {
+    func update(_ memo: Memo) {
         guard let index = memos.firstIndex(where: { $0.id == memo.id }) else {
             return
         }

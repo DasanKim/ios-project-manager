@@ -19,12 +19,20 @@ final class SheetViewModel: ObservableObject {
         self.memoManager = memoManager
     }
     
-    func saveMemo() {
-        memoManager.saveMemo(memo)
-        delegate?.update(memo: memo)
+    func save() {
+        memoManager.save(memo)
+        delegate?.update(memo)
+    }
+    
+    func edit() {
+        canEditable.toggle()
+    }
+    
+    func cancel() {
+        canEditable = true
     }
 }
 
 protocol ViewUpdateDelegate {
-    func update(memo: Memo)
+    func update(_ memo: Memo)
 }

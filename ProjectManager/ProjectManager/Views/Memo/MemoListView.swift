@@ -25,7 +25,7 @@ struct MemoListView: View {
                         MemoRow(viewModel: MemoRowViewModel(memo: memo))
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button(role: .destructive) {
-                                    viewModel.deleteMemo(memo)
+                                    viewModel.delete(memo)
                                 } label: {
                                     Text("Delete")
                                 }

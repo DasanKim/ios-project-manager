@@ -19,4 +19,8 @@ final class MemoHomeViewModel: ObservableObject {
     init(memoManager: MemoManager) {
         self.memoManager = memoManager
     }
+    
+    func create() {
+        showDetail.toggle()
+    }
 }

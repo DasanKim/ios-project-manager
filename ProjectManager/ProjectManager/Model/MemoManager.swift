@@ -14,18 +14,18 @@ final class MemoManager {
         Memo(title: "", body: "", deadline: .now, category: .toDo)
     }
     
-    func filterMemo(by category: Memo.Category) -> [Memo] {
+    func filter(by category: Memo.Category) -> [Memo] {
         memos.filter { $0.category == category }
     }
     
-    func findMemo(id: UUID) -> Memo? {
+    func find(id: UUID) -> Memo? {
         guard let index = memos.firstIndex(where: { $0.id == id }) else {
             return nil
         }
         return memos[index]
     }
     
-    func saveMemo(_ memo: Memo) {
+    func save(_ memo: Memo) {
         guard let index = memos.firstIndex(where: { $0.id == memo.id }) else {
             memos.append(memo)
             return
@@ -33,7 +33,7 @@ final class MemoManager {
         memos[index] = memo
     }
     
-    func deleteMemo(_ memo: Memo) {
+    func delete(_ memo: Memo) {
         guard let index = memos.firstIndex(where: { $0.id == memo.id }) else {
             return
         }

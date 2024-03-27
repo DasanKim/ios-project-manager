@@ -30,7 +30,7 @@ struct MemoHomeView: View {
                 .navigationBarItems(
                     trailing:
                         Button {
-                            viewModel.showDetail.toggle()
+                            viewModel.create()
                         } label: {
                             Image(systemName: "plus")
                         }
