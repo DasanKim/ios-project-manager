@@ -10,8 +10,8 @@ import SwiftUI
 struct HorizontalSpacing: View {
     var body: some View {
         Rectangle()
-            .fill(ColorSet.background)
-            .frame(height: 8)
+            .frame(height: 1)
+            .opacity(0)
     }
 }
 

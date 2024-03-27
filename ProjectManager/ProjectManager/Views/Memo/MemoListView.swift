@@ -31,14 +31,14 @@ struct MemoListView: View {
                                 }
                             }
                             .padding()
-                        
-                        HorizontalDivider()
                     }
-                    .listRowSeparator(.hidden)
                     .listRowInsets(EdgeInsets())
                     .contentShape(Rectangle())
                     .onTapGesture {
                         viewModel.setSelectedMemo(memo)
+                    }
+                    .contextMenu {
+                        Text(memo.category.description)
                     }
                 }
                 .sheet(item: $viewModel.selectedMemo) { memo in
