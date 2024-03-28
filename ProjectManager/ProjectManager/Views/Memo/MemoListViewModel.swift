@@ -36,5 +36,22 @@ final class MemoListViewModel: ObservableObject, ViewUpdateDelegate {
             return
         }
         memos[index] = memo
+        memoManager.save(memo)
+    }
+    
+    func move(_ memo: Memo, destination: Memo.Category) {
+        guard let index = memos.firstIndex(where: { $0.id == memo.id }) else {
+            return
+        }
+        memos[index].category = destination
+        memoManager.save(memos[index])
+    }
+    
+    func getFirstDestination(from category: Memo.Category) -> Memo.Category {
+        return Memo.Category.allCases.filter { $0 != category }[0]
+    }
+    
+    func getSecondDestination(from category: Memo.Category) -> Memo.Category {
+        return Memo.Category.allCases.filter { $0 != category }[1]
     }
 }

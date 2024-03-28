@@ -38,7 +38,17 @@ struct MemoListView: View {
                         viewModel.setSelectedMemo(memo)
                     }
                     .contextMenu {
-                        Text(memo.category.description)
+                        Button {
+                            viewModel.move(memo, destination: viewModel.getFirstDestination(from: memo.category))
+                        } label: {
+                            Text(viewModel.getFirstDestination(from: memo.category).description)
+                        }
+                        
+                        Button {
+                            viewModel.move(memo, destination: viewModel.getSecondDestination(from: memo.category))
+                        } label: {
+                            Text(viewModel.getSecondDestination(from: memo.category).description)
+                        }
                     }
                 }
                 .sheet(item: $viewModel.selectedMemo) { memo in
