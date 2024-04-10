@@ -1,48 +1,14 @@
 //
-//  MemoManager.swift
+//  DummyMemo.swift
 //  ProjectManager
 //
-//  Created by Mary & Dasan on 2023/10/08.
+//  Created by MARY on 2024/04/10.
 //
 
 import Foundation
 
-final class MemoManager {
-    var memos: [Memo] = memoExample
-    
-    var newMemo: Memo {
-        Memo(title: "", body: "", deadline: .now, category: .toDo)
-    }
-    
-    func filter(by category: Memo.Category) -> [Memo] {
-        memos.filter { $0.category == category }
-    }
-    
-    func find(id: UUID) -> Memo? {
-        guard let index = memos.firstIndex(where: { $0.id == id }) else {
-            return nil
-        }
-        return memos[index]
-    }
-    
-    func save(_ memo: Memo) {
-        guard let index = memos.firstIndex(where: { $0.id == memo.id }) else {
-            memos.append(memo)
-            return
-        }
-        memos[index] = memo
-    }
-    
-    func delete(_ memo: Memo) {
-        guard let index = memos.firstIndex(where: { $0.id == memo.id }) else {
-            return
-        }
-        memos.remove(at: index)
-    }
-}
-
-extension MemoManager {
-    private static let memoExample: [Memo] = [
+struct DummyMemo {
+    static let memos: [Memo] = [
         Memo(title: "저녁 재료 주문하기🍅",
              body: "- 파스타면\n- 베이컨\n- 토마토\n- 치즈\n- 생크림",
              deadline: Calendar.current.date(byAdding: .day, value: 0, to: .now) ?? .now,
