@@ -19,6 +19,6 @@ struct DeadlinePicker: View {
 
 struct DeadlinePicker_Previews: PreviewProvider {
     static var previews: some View {
-        DeadlinePicker(date: .constant(MemoManager().memos[0].deadline))
+        DeadlinePicker(date: .constant(DummyMemo.memos[0].deadline))
     }
 }
