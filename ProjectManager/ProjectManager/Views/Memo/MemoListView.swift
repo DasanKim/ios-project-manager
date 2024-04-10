@@ -98,6 +98,8 @@ private struct MemoCellView: View {
                 Text(memo.deadline.formatted(date: .numeric, time: .omitted))
                     .foregroundColor(memoListViewModel.checkDeadlineExpired(memo: memo) ? .red : .primary)
             }
+            .padding(.vertical, 15)
+            .padding(.horizontal, 30)
         }
         .listRowInsets(EdgeInsets())
         .contentShape(Rectangle())
@@ -112,25 +114,25 @@ private struct MemoCellView: View {
                 )
             )
         }
-        
-        //                    .contextMenu {
-        //                        Button {
-        //                            memoListViewModel.move(memo, destination: memoListViewModel.getFirstDestination(from: memo.category))
-        //                        } label: {
-        //                            Text(memoListViewModel.getFirstDestination(from: memo.category).description)
-        //                        }
-        //
-        //                        Button {
-        //                            memoListViewModel.move(memo, destination: memoListViewModel.getSecondDestination(from: memo.category))
-        //                        } label: {
-        //                            Text(memoListViewModel.getSecondDestination(from: memo.category).description)
-        //                        }
-        //                    }
+        .contextMenu {
+            Button {
+                memoBoardViewModel.move(memo, destination: memoBoardViewModel.getFirstDestination(from: memo.category))
+            } label: {
+                Text(memoBoardViewModel.getFirstDestination(from: memo.category).description)
+            }
+
+            Button {
+                memoBoardViewModel.move(memo, destination: memoBoardViewModel.getSecondDestination(from: memo.category))
+            } label: {
+                Text(memoBoardViewModel.getSecondDestination(from: memo.category).description)
+            }
+        }
     }
 }
 
 struct MemoView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoListView(memoListViewModel: MemoListViewModel())
+        MemoListView(memoListViewModel: MemoListViewModel(memos: DummyMemo.memos))
+            .environmentObject(MemoBoardViewModel(memos: DummyMemo.memos))
     }
 }
