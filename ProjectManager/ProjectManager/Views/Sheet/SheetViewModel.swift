@@ -8,31 +8,23 @@
 import Foundation
 
 final class SheetViewModel: ObservableObject {
-    @Published var canEditable: Bool
+    @Published var isEditMode: Bool
     @Published var memo: Memo
-    let memoManager: MemoManager
-    var delegate: ViewUpdateDelegate?
-    
-    init(memo: Memo, canEditable: Bool, memoManager: MemoManager) {
-        self.memo = memo
-        self.canEditable = canEditable
-        self.memoManager = memoManager
-    }
-    
-    func save() {
-        memoManager.save(memo)
-        delegate?.update(memo)
-    }
-    
-    func edit() {
-        canEditable.toggle()
-    }
-    
-    func cancel() {
-        canEditable = true
-    }
-}
 
-protocol ViewUpdateDelegate {
-    func update(_ memo: Memo)
+    init(
+        isEditMode: Bool = true,
+        memo: Memo = .init(
+            title: "",
+            body: "",
+            deadline: .now,
+            category: .toDo
+        )
+    ) {
+        self.isEditMode = isEditMode
+        self.memo = memo
+    }
+    
+    func navigationLeftBtnTapped() {
+        isEditMode.toggle()
+    }
 }

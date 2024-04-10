@@ -9,19 +9,10 @@ import Foundation
 
 final class MemoBoardViewModel: ObservableObject {
     @Published var memos: [Memo]
-    @Published var selectedMemo: Memo? = nil
     let categories = Category.allCases
     
-    init(
-        memos: [Memo] = [],
-        selectedMemo: Memo? = nil
-    ) {
+    init(memos: [Memo] = []) {
         self.memos = memos
-        self.selectedMemo = selectedMemo
-    }
-    
-    func setSelectedMemo(_ memo: Memo) {
-        selectedMemo = memo
     }
     
     func filter(by category: Category) -> [Memo] {

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MemoHomeView: View {
-    @ObservedObject var viewModel = MemoHomeViewModel(memoManager: MemoManager())
+    @StateObject private var memoHomeViewModel = MemoHomeViewModel()
+    @StateObject private var memoBoardViewModel = MemoBoardViewModel(memos: DummyMemo.memos)
     
     var body: some View {
         NavigationView {
@@ -16,32 +17,23 @@ struct MemoHomeView: View {
                 ColorSet.navigationBarBackground.edgesIgnoringSafeArea(.all)
                 ColorSet.backgroundBetweenLists
                 
-                HStack(spacing: 4) {
-                    ForEach(viewModel.categories, id: \.description) {
-                        MemoListView(
-                            viewModel: MemoListViewModel(category: $0,
-                                                         memoManager: viewModel.memoManager)
-                        )
-                    }
-                }
-                .clipped()
-                .navigationBarTitle("Project Manager")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(
-                    trailing:
-                        Button {
-                            viewModel.create()
-                        } label: {
-                            Image(systemName: "plus")
-                        }
-                        .sheet(isPresented: $viewModel.showDetail) {
-                            SheetView(
-                                viewModel: SheetViewModel(memo: viewModel.newMemo,
-                                                          canEditable: true,
-                                                          memoManager: viewModel.memoManager)
-                            )
-                        }
-                )
+                MemoBoardView()
+                    .environmentObject(memoBoardViewModel)
+                    .clipped()
+                    .navigationBarTitle("Project Manager")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarItems(
+                        trailing:
+                            Button {
+                                memoHomeViewModel.plusBtnTapped()
+                            } label: {
+                                Image(systemName: "plus")
+                            }
+                            .sheet(isPresented: $memoHomeViewModel.isDisplaySheet) {
+                                SheetView(sheetViewModel: SheetViewModel())
+                                    .environmentObject(memoBoardViewModel)
+                            }
+                    )
             }
         }
         .navigationViewStyle(.stack)

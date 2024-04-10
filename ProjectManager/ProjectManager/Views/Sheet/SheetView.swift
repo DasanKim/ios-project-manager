@@ -9,43 +9,45 @@ import SwiftUI
 
 struct SheetView: View {
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var viewModel: SheetViewModel
+    @EnvironmentObject private var memoBoardViewModel: MemoBoardViewModel
+    @StateObject var sheetViewModel: SheetViewModel
     
     var body: some View {
         NavigationView {
             VStack {
-                TitleTextField(content: $viewModel.memo.title)
-                DeadlinePicker(date: $viewModel.memo.deadline)
-                BodyTextField(content: $viewModel.memo.body)
+                TitleTextField(content: $sheetViewModel.memo.title)
+                DeadlinePicker(date: $sheetViewModel.memo.deadline)
+                BodyTextField(content: $sheetViewModel.memo.body)
             }
             .sheetBackground()
-            .disabled(!viewModel.canEditable)
-            .navigationTitle(viewModel.memo.category.description)
+            .disabled(!sheetViewModel.isEditMode)
+            .navigationTitle(sheetViewModel.memo.category.description)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
-                leading: viewModel.canEditable ? AnyView(cancelButton) : AnyView(editButton),
-                trailing: doneButton
+                leading: leftButton,
+                trailing: rightButton
             )
         }
         .navigationViewStyle(.stack)
     }
     
-    var editButton: some View {
-        Button("Edit") {
-            viewModel.edit()
-        }
+    private var leftButton: some View {
+        Button(
+            action: {
+                if sheetViewModel.isEditMode {
+                    dismiss()
+                }
+                sheetViewModel.navigationLeftBtnTapped()
+            },
+            label: {
+                Text(sheetViewModel.isEditMode ? "Cancel" : "Edit")
+            }
+        )
     }
     
-    var cancelButton: some View {
-        Button("Cancel") {
-            dismiss()
-            viewModel.cancel()
-        }
-    }
-    
-    var doneButton: some View {
+    private var rightButton: some View {
         Button("Done") {
-            viewModel.save()
+            memoBoardViewModel.save(sheetViewModel.memo)
             dismiss()
         }
     }
@@ -53,6 +55,7 @@ struct SheetView: View {
 
 struct SheetView_Previews: PreviewProvider {
     static var previews: some View {
-        SheetView(viewModel: SheetViewModel(memo: Memo(title: "", body: "", deadline: .now, category: .toDo), canEditable: true, memoManager: MemoManager()))
+        SheetView(sheetViewModel: SheetViewModel())
+            .environmentObject(MemoBoardViewModel())
     }
 }

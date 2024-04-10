@@ -8,75 +8,129 @@
 import SwiftUI
 
 struct MemoListView: View {
-    @ObservedObject var viewModel: MemoListViewModel
-
+    @StateObject var memoListViewModel: MemoListViewModel
+    
     var body: some View {
         VStack(spacing: 0) {
-            ListHeader(
-                category: viewModel.category.description,
-                memoCount: viewModel.memos.count
-            )
+            TitleView(memoListViewModel: memoListViewModel)
             
-            List {
-                ForEach(viewModel.memos) { memo in
-                    VStack(alignment: .leading, spacing: 2) {
-                        HorizontalSpacing()
-                        
-                        MemoRow(viewModel: MemoRowViewModel(memo: memo))
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                Button(role: .destructive) {
-                                    viewModel.delete(memo)
-                                } label: {
-                                    Text("Delete")
-                                }
-                            }
-                            .padding()
-                    }
-                    .listRowInsets(EdgeInsets())
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        viewModel.setSelectedMemo(memo)
-                    }
-                    .contextMenu {
-                        Button {
-                            viewModel.move(memo, destination: viewModel.getFirstDestination(from: memo.category))
-                        } label: {
-                            Text(viewModel.getFirstDestination(from: memo.category).description)
-                        }
-                        
-                        Button {
-                            viewModel.move(memo, destination: viewModel.getSecondDestination(from: memo.category))
-                        } label: {
-                            Text(viewModel.getSecondDestination(from: memo.category).description)
-                        }
-                    }
-                }
-                .sheet(item: $viewModel.selectedMemo) { memo in
-                    createSheetView(memo: memo)
-                }
-            }
-            .background(ColorSet.background)
-            .listStyle(.plain)
+            MemoListContentView(memoListViewModel: memoListViewModel)
+                .background(ColorSet.background)
+                .listStyle(.plain)
         }
     }
+}
+
+// MARK: - 카테고리 타이틀 뷰
+private struct TitleView: View {
+    @ObservedObject private var memoListViewModel: MemoListViewModel
     
-    private func createSheetView(memo: Memo) -> SheetView {
-        let sheetViewModel = SheetViewModel(memo: memo,
-                                            canEditable: false,
-                                            memoManager: viewModel.memoManager)
-        sheetViewModel.delegate = viewModel
-        
-        return SheetView(
-            viewModel: sheetViewModel
+    fileprivate init(memoListViewModel: MemoListViewModel) {
+        self.memoListViewModel = memoListViewModel
+    }
+    
+    fileprivate var body: some View {
+        ListHeader(
+            category: memoListViewModel.category.description,
+            memoCount: memoListViewModel.memos.count
         )
+    }
+}
+
+// MARK: - 리스트 컨텐츠 뷰
+private struct MemoListContentView: View {
+    @ObservedObject private var memoListViewModel: MemoListViewModel
+    @EnvironmentObject private var memoBoardViewModel: MemoBoardViewModel
+    
+    fileprivate init(memoListViewModel: MemoListViewModel) {
+        self.memoListViewModel = memoListViewModel
+    }
+    
+    fileprivate var body: some View {
+        List {
+            ForEach(memoListViewModel.memos) { memo in
+                MemoCellView(
+                    memoListViewModel: memoListViewModel,
+                    memo: memo
+                )
+                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    Button(role: .destructive) {
+                        memoBoardViewModel.delete(memo)
+                    } label: {
+                        Text("Delete")
+                    }
+                }
+            }
+        }
+        .onChange(of: memoBoardViewModel.memos) { newValue in
+            memoListViewModel.memos = newValue.filter { $0.category == memoListViewModel.category }
+        }
+    }
+}
+
+// MARK: - 메모 셀 뷰
+private struct MemoCellView: View {
+    @ObservedObject private var memoListViewModel: MemoListViewModel
+    @EnvironmentObject private var memoBoardViewModel: MemoBoardViewModel
+    var memo: Memo
+    
+    fileprivate init(
+        memoListViewModel: MemoListViewModel,
+        memo: Memo
+    ) {
+        self.memoListViewModel = memoListViewModel
+        self.memo = memo
+    }
+    
+    fileprivate var body: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            HorizontalSpacing()
+            
+            VStack(alignment: .leading) {
+                Text(memo.title)
+                    .font(.title3)
+                    .lineLimit(1)
+                
+                Text(memo.body)
+                    .foregroundColor(.secondary)
+                    .lineLimit(3)
+                
+                Text(memo.deadline.formatted(date: .numeric, time: .omitted))
+                    .foregroundColor(memoListViewModel.checkDeadlineExpired(memo: memo) ? .red : .primary)
+            }
+        }
+        .listRowInsets(EdgeInsets())
+        .contentShape(Rectangle())
+        .onTapGesture {
+            memoListViewModel.memoCellTapped(memo: memo)
+        }
+        .sheet(item: $memoListViewModel.selectedMemo) { memo in
+            SheetView(
+                sheetViewModel: SheetViewModel(
+                    isEditMode: false,
+                    memo: memo
+                )
+            )
+        }
+        
+        //                    .contextMenu {
+        //                        Button {
+        //                            memoListViewModel.move(memo, destination: memoListViewModel.getFirstDestination(from: memo.category))
+        //                        } label: {
+        //                            Text(memoListViewModel.getFirstDestination(from: memo.category).description)
+        //                        }
+        //
+        //                        Button {
+        //                            memoListViewModel.move(memo, destination: memoListViewModel.getSecondDestination(from: memo.category))
+        //                        } label: {
+        //                            Text(memoListViewModel.getSecondDestination(from: memo.category).description)
+        //                        }
+        //                    }
     }
 }
 
 struct MemoView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoListView(
-            viewModel: MemoListViewModel(category: .toDo,
-                                         memoManager: MemoManager())
-        )
+        MemoListView(memoListViewModel: MemoListViewModel())
     }
 }

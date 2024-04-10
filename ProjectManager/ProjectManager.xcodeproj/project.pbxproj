@@ -10,9 +10,9 @@
 		444293342BC52CE5008CAA2C /* MemoBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444293332BC52CE5008CAA2C /* MemoBoardView.swift */; };
 		444293362BC52CF3008CAA2C /* MemoBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444293352BC52CF3008CAA2C /* MemoBoardViewModel.swift */; };
 		444293382BC52E15008CAA2C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444293372BC52E15008CAA2C /* Category.swift */; };
+		4442933A2BC68BFF008CAA2C /* DummyMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444293392BC68BFF008CAA2C /* DummyMemo.swift */; };
 		44476BE92AD1A52C002C456B /* MemoHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44476BE82AD1A52C002C456B /* MemoHomeViewModel.swift */; };
 		44476BEB2AD1A6F2002C456B /* MemoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44476BEA2AD1A6F2002C456B /* MemoListViewModel.swift */; };
-		44476BED2AD1B3FA002C456B /* MemoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44476BEC2AD1B3FA002C456B /* MemoManager.swift */; };
 		44DC005A2AB991B800AF3C0E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 44DC00592AB991B800AF3C0E /* FirebaseDatabase */; };
 		44DC005C2AB992A400AF3C0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44DC005B2AB992A400AF3C0E /* GoogleService-Info.plist */; };
 		44FC5B612AC559670092E412 /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC5B602AC559670092E412 /* TitleTextField.swift */; };
@@ -22,7 +22,6 @@
 		44FC5B6D2AC560AD0092E412 /* ListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC5B6C2AC560AD0092E412 /* ListHeader.swift */; };
 		44FC5B722ACC07DD0092E412 /* SheetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC5B712ACC07DD0092E412 /* SheetBackground.swift */; };
 		AC20E4A82ABD67600076E80F /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20E4A72ABD67600076E80F /* Memo.swift */; };
-		AC20E4AE2ABD6D460076E80F /* MemoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20E4AD2ABD6D460076E80F /* MemoRow.swift */; };
 		AC20E4B02ABD6F120076E80F /* MemoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20E4AF2ABD6F120076E80F /* MemoListView.swift */; };
 		AC20E4B22ABD70EB0076E80F /* MemoHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20E4B12ABD70EB0076E80F /* MemoHomeView.swift */; };
 		AC20E4B92AC47F520076E80F /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20E4B82AC47F520076E80F /* ColorSet.swift */; };
@@ -33,16 +32,15 @@
 		AC6FCE682AB9889200B82DF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6FCE672AB9889200B82DF1 /* Preview Assets.xcassets */; };
 		AC75E9C22ABAD8C000493121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC75E9C12ABAD8C000493121 /* AppDelegate.swift */; };
 		AC86F6262AD15122002BF540 /* SheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86F6252AD15122002BF540 /* SheetViewModel.swift */; };
-		AC86F62A2AD30303002BF540 /* MemoRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86F6292AD30303002BF540 /* MemoRowViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		444293332BC52CE5008CAA2C /* MemoBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoBoardView.swift; sourceTree = "<group>"; };
 		444293352BC52CF3008CAA2C /* MemoBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoBoardViewModel.swift; sourceTree = "<group>"; };
 		444293372BC52E15008CAA2C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		444293392BC68BFF008CAA2C /* DummyMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyMemo.swift; sourceTree = "<group>"; };
 		44476BE82AD1A52C002C456B /* MemoHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoHomeViewModel.swift; sourceTree = "<group>"; };
 		44476BEA2AD1A6F2002C456B /* MemoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewModel.swift; sourceTree = "<group>"; };
-		44476BEC2AD1B3FA002C456B /* MemoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoManager.swift; sourceTree = "<group>"; };
 		44DC005B2AB992A400AF3C0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44FC5B602AC559670092E412 /* TitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextField.swift; sourceTree = "<group>"; };
 		44FC5B622AC55B160092E412 /* BodyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTextField.swift; sourceTree = "<group>"; };
@@ -51,7 +49,6 @@
 		44FC5B6C2AC560AD0092E412 /* ListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeader.swift; sourceTree = "<group>"; };
 		44FC5B712ACC07DD0092E412 /* SheetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetBackground.swift; sourceTree = "<group>"; };
 		AC20E4A72ABD67600076E80F /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
-		AC20E4AD2ABD6D460076E80F /* MemoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRow.swift; sourceTree = "<group>"; };
 		AC20E4AF2ABD6F120076E80F /* MemoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListView.swift; sourceTree = "<group>"; };
 		AC20E4B12ABD70EB0076E80F /* MemoHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoHomeView.swift; sourceTree = "<group>"; };
 		AC20E4B82AC47F520076E80F /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
@@ -63,7 +60,6 @@
 		AC6FCE672AB9889200B82DF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC75E9C12ABAD8C000493121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC86F6252AD15122002BF540 /* SheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewModel.swift; sourceTree = "<group>"; };
-		AC86F6292AD30303002BF540 /* MemoRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRowViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +83,6 @@
 				444293352BC52CF3008CAA2C /* MemoBoardViewModel.swift */,
 				AC20E4AF2ABD6F120076E80F /* MemoListView.swift */,
 				44476BEA2AD1A6F2002C456B /* MemoListViewModel.swift */,
-				AC20E4AD2ABD6D460076E80F /* MemoRow.swift */,
-				AC86F6292AD30303002BF540 /* MemoRowViewModel.swift */,
 				44FC5B692AC55F890092E412 /* Component */,
 			);
 			path = Memo;
@@ -137,8 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				AC20E4A72ABD67600076E80F /* Memo.swift */,
-				44476BEC2AD1B3FA002C456B /* MemoManager.swift */,
 				444293372BC52E15008CAA2C /* Category.swift */,
+				444293392BC68BFF008CAA2C /* DummyMemo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,12 +292,10 @@
 				AC20E4B22ABD70EB0076E80F /* MemoHomeView.swift in Sources */,
 				AC20E4B02ABD6F120076E80F /* MemoListView.swift in Sources */,
 				44FC5B6B2AC560380092E412 /* HorizontalDivider.swift in Sources */,
-				AC20E4AE2ABD6D460076E80F /* MemoRow.swift in Sources */,
+				4442933A2BC68BFF008CAA2C /* DummyMemo.swift in Sources */,
 				44476BE92AD1A52C002C456B /* MemoHomeViewModel.swift in Sources */,
 				AC23046F2ACA5C9300663591 /* HorizontalSpacing.swift in Sources */,
-				44476BED2AD1B3FA002C456B /* MemoManager.swift in Sources */,
 				44FC5B612AC559670092E412 /* TitleTextField.swift in Sources */,
-				AC86F62A2AD30303002BF540 /* MemoRowViewModel.swift in Sources */,
 				44476BEB2AD1A6F2002C456B /* MemoListViewModel.swift in Sources */,
 				44FC5B652AC55C9B0092E412 /* DeadlinePicker.swift in Sources */,
 				444293382BC52E15008CAA2C /* Category.swift in Sources */,
