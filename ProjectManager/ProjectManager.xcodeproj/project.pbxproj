@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		444293342BC52CE5008CAA2C /* MemoBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444293332BC52CE5008CAA2C /* MemoBoardView.swift */; };
+		444293362BC52CF3008CAA2C /* MemoBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444293352BC52CF3008CAA2C /* MemoBoardViewModel.swift */; };
+		444293382BC52E15008CAA2C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444293372BC52E15008CAA2C /* Category.swift */; };
 		44476BE92AD1A52C002C456B /* MemoHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44476BE82AD1A52C002C456B /* MemoHomeViewModel.swift */; };
 		44476BEB2AD1A6F2002C456B /* MemoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44476BEA2AD1A6F2002C456B /* MemoListViewModel.swift */; };
 		44476BED2AD1B3FA002C456B /* MemoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44476BEC2AD1B3FA002C456B /* MemoManager.swift */; };
@@ -34,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		444293332BC52CE5008CAA2C /* MemoBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoBoardView.swift; sourceTree = "<group>"; };
+		444293352BC52CF3008CAA2C /* MemoBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoBoardViewModel.swift; sourceTree = "<group>"; };
+		444293372BC52E15008CAA2C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		44476BE82AD1A52C002C456B /* MemoHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoHomeViewModel.swift; sourceTree = "<group>"; };
 		44476BEA2AD1A6F2002C456B /* MemoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewModel.swift; sourceTree = "<group>"; };
 		44476BEC2AD1B3FA002C456B /* MemoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoManager.swift; sourceTree = "<group>"; };
@@ -77,6 +83,8 @@
 			children = (
 				AC20E4B12ABD70EB0076E80F /* MemoHomeView.swift */,
 				44476BE82AD1A52C002C456B /* MemoHomeViewModel.swift */,
+				444293332BC52CE5008CAA2C /* MemoBoardView.swift */,
+				444293352BC52CF3008CAA2C /* MemoBoardViewModel.swift */,
 				AC20E4AF2ABD6F120076E80F /* MemoListView.swift */,
 				44476BEA2AD1A6F2002C456B /* MemoListViewModel.swift */,
 				AC20E4AD2ABD6D460076E80F /* MemoRow.swift */,
@@ -130,6 +138,7 @@
 			children = (
 				AC20E4A72ABD67600076E80F /* Memo.swift */,
 				44476BEC2AD1B3FA002C456B /* MemoManager.swift */,
+				444293372BC52E15008CAA2C /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,11 +306,14 @@
 				AC86F62A2AD30303002BF540 /* MemoRowViewModel.swift in Sources */,
 				44476BEB2AD1A6F2002C456B /* MemoListViewModel.swift in Sources */,
 				44FC5B652AC55C9B0092E412 /* DeadlinePicker.swift in Sources */,
+				444293382BC52E15008CAA2C /* Category.swift in Sources */,
 				AC20E4B92AC47F520076E80F /* ColorSet.swift in Sources */,
 				AC553F942ACD3EE200BCCCA2 /* SheetView.swift in Sources */,
 				AC6FCE612AB9889100B82DF1 /* ProjectManagerApp.swift in Sources */,
+				444293362BC52CF3008CAA2C /* MemoBoardViewModel.swift in Sources */,
 				AC20E4A82ABD67600076E80F /* Memo.swift in Sources */,
 				44FC5B632AC55B160092E412 /* BodyTextField.swift in Sources */,
+				444293342BC52CE5008CAA2C /* MemoBoardView.swift in Sources */,
 				44FC5B722ACC07DD0092E412 /* SheetBackground.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

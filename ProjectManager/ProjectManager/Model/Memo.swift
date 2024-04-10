@@ -13,21 +13,4 @@ struct Memo: Identifiable, Equatable {
     var body: String
     var deadline: Date
     var category: Category
-    
-    enum Category: CustomStringConvertible, CaseIterable {
-        case toDo
-        case doing
-        case done
-        
-        var description: String {
-            switch self {
-            case .toDo:
-                return "TODO"
-            case .doing:
-                return "DOING"
-            case .done:
-                return "DONE"
-            }
-        }
-    }
 }
