@@ -20,6 +20,8 @@ final class MemoBoardViewModel: ObservableObject {
     }
     
     func save(_ memo: Memo) {
+        guard checkValid(memo) else { return }
+        
         guard let index = memos.firstIndex(where: { $0.id == memo.id }) else {
             memos.append(memo)
             return
@@ -47,5 +49,9 @@ final class MemoBoardViewModel: ObservableObject {
     
     func getSecondDestination(from category: Category) -> Category {
         return Category.allCases.filter { $0 != category }[1]
+    }
+        
+    private func checkValid(_ memo: Memo) -> Bool {
+        return !memo.title.isEmpty || !memo.body.isEmpty
     }
 }
