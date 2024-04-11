@@ -86,12 +86,12 @@ private struct MemoCellView: View {
         VStack(alignment: .leading, spacing: 2) {
             HorizontalSpacing()
             
-            VStack(alignment: .leading) {
-                Text(memo.title)
+            VStack(alignment: .leading, spacing: 8) {
+                Text(memo.title.isEmpty ? "새로운 할 일" : memo.title)
                     .font(.title3)
                     .lineLimit(1)
                 
-                Text(memo.body)
+                Text(memo.body.isEmpty ? "추가 텍스트 없음" : memo.body)
                     .foregroundColor(.secondary)
                     .lineLimit(3)
                 
