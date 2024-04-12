@@ -62,8 +62,8 @@ private struct MemoListContentView: View {
                 }
             }
         }
-        .onChange(of: memoBoardViewModel.memos) { newValue in
-            memoListViewModel.memos = newValue.filter { $0.category == memoListViewModel.category }
+        .onChange(of: memoBoardViewModel.memos) { memos in
+            memoListViewModel.memos = memos.filter { $0.category == memoListViewModel.category }
         }
     }
 }
@@ -72,6 +72,7 @@ private struct MemoListContentView: View {
 private struct MemoCellView: View {
     @ObservedObject private var memoListViewModel: MemoListViewModel
     @EnvironmentObject private var memoBoardViewModel: MemoBoardViewModel
+    @State var isDisplaySheet: Bool = false
     var memo: Memo
     
     fileprivate init(
@@ -95,7 +96,7 @@ private struct MemoCellView: View {
                     .foregroundColor(.secondary)
                     .lineLimit(3)
                 
-                Text(memo.deadline.formatted(date: .numeric, time: .omitted))
+                Text(memo.deadline.formattedDate)
                     .foregroundColor(memoListViewModel.checkDeadlineExpired(memo: memo) ? .red : .primary)
             }
             .padding(.vertical, 15)
@@ -104,27 +105,26 @@ private struct MemoCellView: View {
         .listRowInsets(EdgeInsets())
         .contentShape(Rectangle())
         .onTapGesture {
-            memoListViewModel.memoCellTapped(memo: memo)
+            isDisplaySheet.toggle()
         }
-        .sheet(item: $memoListViewModel.selectedMemo) { memo in
+        .sheet(isPresented: $isDisplaySheet) {
             SheetView(
-                sheetViewModel: SheetViewModel(
+                sheetViewModel: .init(
                     isEditMode: false,
-                    memo: memo
-                )
+                    memo: memo)
             )
         }
         .contextMenu {
             Button {
                 memoBoardViewModel.move(memo, destination: memoBoardViewModel.getFirstDestination(from: memo.category))
             } label: {
-                Text(memoBoardViewModel.getFirstDestination(from: memo.category).description)
+                Text("\(memoBoardViewModel.getFirstDestination(from: memo.category).description)으로 이동")
             }
 
             Button {
                 memoBoardViewModel.move(memo, destination: memoBoardViewModel.getSecondDestination(from: memo.category))
             } label: {
-                Text(memoBoardViewModel.getSecondDestination(from: memo.category).description)
+                Text("\(memoBoardViewModel.getSecondDestination(from: memo.category).description)으로 이동")
             }
         }
     }

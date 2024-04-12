@@ -9,7 +9,6 @@ import Foundation
 
 final class MemoListViewModel: ObservableObject {
     @Published var memos: [Memo]
-    @Published var selectedMemo: Memo?
     let category: Category
 
     init(
@@ -26,9 +25,5 @@ final class MemoListViewModel: ObservableObject {
             return true
         }
         return false
-    }
-    
-    func memoCellTapped(memo: Memo) {
-        selectedMemo = memo
     }
 }
