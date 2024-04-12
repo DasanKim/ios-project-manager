@@ -12,6 +12,11 @@ struct SheetView: View {
     @EnvironmentObject private var memoBoardViewModel: MemoBoardViewModel
     @StateObject var sheetViewModel: SheetViewModel
     
+    init(sheetViewModel: SheetViewModel) {
+        _sheetViewModel = StateObject(wrappedValue: sheetViewModel)
+        print("시트 뷰")
+    }
+    
     var body: some View {
         NavigationView {
             VStack {

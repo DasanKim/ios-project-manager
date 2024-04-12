@@ -10,6 +10,10 @@ import SwiftUI
 struct MemoBoardView: View {
     @EnvironmentObject private var memoBoardViewModel: MemoBoardViewModel
     
+    init() {
+        print("메모 보드 뷰")
+    }
+    
     var body: some View {
         HStack(spacing: 4) {
             ForEach(Category.allCases, id: \.description) { category in

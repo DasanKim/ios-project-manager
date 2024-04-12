@@ -10,6 +10,11 @@ import SwiftUI
 struct MemoListView: View {
     @StateObject var memoListViewModel: MemoListViewModel
     
+    init(memoListViewModel: MemoListViewModel) {
+        _memoListViewModel = StateObject(wrappedValue: memoListViewModel)
+        print("메모 리스트 뷰")
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             TitleView(memoListViewModel: memoListViewModel)
@@ -27,6 +32,7 @@ private struct TitleView: View {
     
     fileprivate init(memoListViewModel: MemoListViewModel) {
         self.memoListViewModel = memoListViewModel
+        print("타이틀 뷰")
     }
     
     fileprivate var body: some View {
@@ -44,6 +50,7 @@ private struct MemoListContentView: View {
     
     fileprivate init(memoListViewModel: MemoListViewModel) {
         self.memoListViewModel = memoListViewModel
+        print("메모 리스트 컨텐츠 뷰")
     }
     
     fileprivate var body: some View {
@@ -81,6 +88,7 @@ private struct MemoCellView: View {
     ) {
         self.memoListViewModel = memoListViewModel
         self.memo = memo
+        print("메모 셀 뷰")
     }
     
     fileprivate var body: some View {
