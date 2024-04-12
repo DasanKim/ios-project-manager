@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct MemoListView: View {
-    @StateObject var memoListViewModel: MemoListViewModel
+    //@StateObject var memoListViewModel: MemoListViewModel
+    @ObservedObject var memoListViewModel: MemoListViewModel
     
     init(memoListViewModel: MemoListViewModel) {
-        _memoListViewModel = StateObject(wrappedValue: memoListViewModel)
+        self.memoListViewModel = memoListViewModel
         print("메모 리스트 뷰")
     }
+    
+//    init(memoListViewModel: MemoListViewModel) {
+//        _memoListViewModel = StateObject(wrappedValue: memoListViewModel)
+//        print("메모 리스트 뷰")
+//    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -69,9 +75,9 @@ private struct MemoListContentView: View {
                 }
             }
         }
-        .onChange(of: memoBoardViewModel.memos) { memos in
-            memoListViewModel.memos = memos.filter { $0.category == memoListViewModel.category }
-        }
+//        .onChange(of: memoBoardViewModel.memos) { memos in
+//            memoListViewModel.memos = memos.filter { $0.category == memoListViewModel.category }
+//        }
     }
 }
 
