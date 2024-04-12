@@ -26,6 +26,7 @@
 		AC20E4B22ABD70EB0076E80F /* MemoHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20E4B12ABD70EB0076E80F /* MemoHomeView.swift */; };
 		AC20E4B92AC47F520076E80F /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20E4B82AC47F520076E80F /* ColorSet.swift */; };
 		AC23046F2ACA5C9300663591 /* HorizontalSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC23046E2ACA5C9300663591 /* HorizontalSpacing.swift */; };
+		AC4638D32BC7CD6A0030ACAE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4638D22BC7CD6A0030ACAE /* Date+Extensions.swift */; };
 		AC553F942ACD3EE200BCCCA2 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC553F932ACD3EE200BCCCA2 /* SheetView.swift */; };
 		AC6FCE612AB9889100B82DF1 /* ProjectManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FCE602AB9889100B82DF1 /* ProjectManagerApp.swift */; };
 		AC6FCE652AB9889200B82DF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6FCE642AB9889200B82DF1 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		AC20E4B12ABD70EB0076E80F /* MemoHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoHomeView.swift; sourceTree = "<group>"; };
 		AC20E4B82AC47F520076E80F /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
 		AC23046E2ACA5C9300663591 /* HorizontalSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSpacing.swift; sourceTree = "<group>"; };
+		AC4638D22BC7CD6A0030ACAE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AC553F932ACD3EE200BCCCA2 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		AC6FCE5D2AB9889100B82DF1 /* ProjectManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6FCE602AB9889100B82DF1 /* ProjectManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerApp.swift; sourceTree = "<group>"; };
@@ -145,6 +147,23 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		AC4638D02BC7CD3F0030ACAE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AC20E4B72AC47ED80076E80F /* Utility */,
+				AC4638D12BC7CD4B0030ACAE /* Extension */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		AC4638D12BC7CD4B0030ACAE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AC4638D22BC7CD6A0030ACAE /* Date+Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		AC6FCE542AB9889100B82DF1 = {
 			isa = PBXGroup;
 			children = (
@@ -165,9 +184,9 @@
 			isa = PBXGroup;
 			children = (
 				ACE4DF752ABD322E0085835D /* Application */,
+				AC4638D02BC7CD3F0030ACAE /* Core */,
 				ACE4DF732ABD311F0085835D /* Views */,
 				AC20E4A62ABD66740076E80F /* Model */,
-				AC20E4B72AC47ED80076E80F /* Utility */,
 				ACE4DF762ABD34480085835D /* Resource */,
 				AC6FCE662AB9889200B82DF1 /* Preview Content */,
 				44DC005B2AB992A400AF3C0E /* GoogleService-Info.plist */,
@@ -287,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC86F6262AD15122002BF540 /* SheetViewModel.swift in Sources */,
+				AC4638D32BC7CD6A0030ACAE /* Date+Extensions.swift in Sources */,
 				44FC5B6D2AC560AD0092E412 /* ListHeader.swift in Sources */,
 				AC75E9C22ABAD8C000493121 /* AppDelegate.swift in Sources */,
 				AC20E4B22ABD70EB0076E80F /* MemoHomeView.swift in Sources */,
