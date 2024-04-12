@@ -2,7 +2,7 @@
 //  DummyMemo.swift
 //  ProjectManager
 //
-//  Created by MARY on 2024/04/10.
+//  Created by Mary & Dasan on 2024/04/10.
 //
 
 import Foundation

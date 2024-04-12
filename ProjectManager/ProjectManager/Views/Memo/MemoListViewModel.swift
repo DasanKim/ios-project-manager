@@ -10,6 +10,14 @@ import Foundation
 final class MemoListViewModel: ObservableObject {
     @Published var memos: [Memo]
     let category: Category
+    
+    var firstDestination: Category {
+        Category.allCases.filter { $0 != category }[0]
+    }
+    
+    var secondDestination: Category {
+        Category.allCases.filter { $0 != category }[1]
+    }
 
     init(
         memos: [Memo] = [],

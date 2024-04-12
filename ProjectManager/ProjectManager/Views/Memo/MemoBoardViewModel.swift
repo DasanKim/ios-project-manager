@@ -2,14 +2,13 @@
 //  MemoBoardViewModel.swift
 //  ProjectManager
 //
-//  Created by MARY on 2024/04/09.
+//  Created by Mary & Dasan on 2024/04/09.
 //
 
 import Foundation
 
 final class MemoBoardViewModel: ObservableObject {
     @Published var memos: [Memo]
-    let categories = Category.allCases
     
     init(memos: [Memo] = []) {
         self.memos = memos
@@ -41,14 +40,6 @@ final class MemoBoardViewModel: ObservableObject {
             return
         }
         memos[index].category = destination
-    }
-    
-    func getFirstDestination(from category: Category) -> Category {
-        return Category.allCases.filter { $0 != category }[0]
-    }
-    
-    func getSecondDestination(from category: Category) -> Category {
-        return Category.allCases.filter { $0 != category }[1]
     }
         
     private func checkValid(_ memo: Memo) -> Bool {

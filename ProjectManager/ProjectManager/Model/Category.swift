@@ -2,7 +2,7 @@
 //  Category.swift
 //  ProjectManager
 //
-//  Created by MARY on 2024/04/09.
+//  Created by Mary & Dasan on 2024/04/09.
 //
 
 enum Category: CustomStringConvertible, CaseIterable {

@@ -2,7 +2,7 @@
 //  MemoBoardView.swift
 //  ProjectManager
 //
-//  Created by MARY on 2024/04/09.
+//  Created by Mary & Dasan on 2024/04/09.
 //
 
 import SwiftUI
@@ -12,7 +12,7 @@ struct MemoBoardView: View {
     
     var body: some View {
         HStack(spacing: 4) {
-            ForEach(memoBoardViewModel.categories, id: \.description) { category in
+            ForEach(Category.allCases, id: \.description) { category in
                 MemoListView(
                     memoListViewModel: MemoListViewModel(
                         memos: memoBoardViewModel.filter(by: category),

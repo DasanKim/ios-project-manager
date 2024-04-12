@@ -72,8 +72,8 @@ private struct MemoListContentView: View {
 private struct MemoCellView: View {
     @ObservedObject private var memoListViewModel: MemoListViewModel
     @EnvironmentObject private var memoBoardViewModel: MemoBoardViewModel
-    @State var isDisplaySheet: Bool = false
-    var memo: Memo
+    @State private var isDisplaySheet: Bool = false
+    private var memo: Memo
     
     fileprivate init(
         memoListViewModel: MemoListViewModel,
@@ -100,7 +100,7 @@ private struct MemoCellView: View {
                     .foregroundColor(memoListViewModel.checkDeadlineExpired(memo: memo) ? .red : .primary)
             }
             .padding(.vertical, 15)
-            .padding(.horizontal, 30)
+            .padding(.horizontal, 25)
         }
         .listRowInsets(EdgeInsets())
         .contentShape(Rectangle())
@@ -116,15 +116,15 @@ private struct MemoCellView: View {
         }
         .contextMenu {
             Button {
-                memoBoardViewModel.move(memo, destination: memoBoardViewModel.getFirstDestination(from: memo.category))
+                memoBoardViewModel.move(memo, destination: memoListViewModel.firstDestination)
             } label: {
-                Text("\(memoBoardViewModel.getFirstDestination(from: memo.category).description)으로 이동")
+                Text("\(memoListViewModel.firstDestination.description)으로 이동")
             }
 
             Button {
-                memoBoardViewModel.move(memo, destination: memoBoardViewModel.getSecondDestination(from: memo.category))
+                memoBoardViewModel.move(memo, destination: memoListViewModel.secondDestination)
             } label: {
-                Text("\(memoBoardViewModel.getSecondDestination(from: memo.category).description)으로 이동")
+                Text("\(memoListViewModel.secondDestination.description)으로 이동")
             }
         }
     }

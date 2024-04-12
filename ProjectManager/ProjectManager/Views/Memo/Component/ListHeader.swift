@@ -11,7 +11,10 @@ struct ListHeader: View {
     private var category: String
     private var memoCount: Int
     
-    init(category: String, memoCount: Int) {
+    init(
+        category: String,
+        memoCount: Int
+    ) {
         self.category = category
         self.memoCount = memoCount
     }
