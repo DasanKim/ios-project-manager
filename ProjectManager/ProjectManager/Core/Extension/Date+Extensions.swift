@@ -13,9 +13,7 @@ extension Date {
             .year()
             .day()
             .month()
-            .locale(Locale.current.regionCode == "KR" ?
-                    Locale(identifier: "ko_KR")
-                    : Locale(identifier: "en_EH"))
+            .locale(Locale(identifier: NSLocale.preferredLanguages.first ?? "ko_KR"))
         
         return self.formatted(myFormat)
     }

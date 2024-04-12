@@ -14,6 +14,7 @@ struct DeadlinePicker: View {
         DatePicker("deadline", selection: $date, displayedComponents: .date)
             .labelsHidden()
             .datePickerStyle(.wheel)
+            .environment(\.locale, Locale(identifier: NSLocale.preferredLanguages.first ?? "ko_KR"))
     }
 }
 
