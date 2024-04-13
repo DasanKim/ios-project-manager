@@ -59,6 +59,7 @@
 - List의 Row를 선택하면 해당 sheet가 보여져야 했습니다.
 - 사용자의 tapGesture에 반응하기위하여 State 속성의 `isDisplaySheet` 프로퍼티를 만들고, 해당 값이 `true`일 때 sheet를 띄우도록 하였습니다.
 - 하지만 실행해보니, 선택한 Row가 아닌 맨 마지막 Row의 메모만 보여졌습니다.
+  
   <img src="https://github.com/yagom-academy/ios-project-manager/assets/106504779/4d1616fb-34aa-4514-bbf1-1e551969d1ad" width="500">
 
 <details>
@@ -153,6 +154,7 @@ var body: some View {
         ```
         </details>
 - 두 가지 해결방법 중 ForEach 내에서 sheet사용하기보다 가장 하위 계층에 있는 MemoCellView에서 sheet를 사용하는 것이 안전할 뿐만아니라, 역할적으로도 MemoCell에서 담당하는 것이 자연스럽다고 판단하여 두 번째 방법을 선택하여 진행하였습니다.
+  
   <img src="https://github.com/yagom-academy/ios-project-manager/assets/106504779/4733ef6a-c6c1-4894-a35b-53d20a313221" width="500">
 
 <br>
